@@ -32,4 +32,9 @@ public class ResetPasswordPage {
     public void  ClickConfirm(){
         helper.getElementByXpath("//button[@type='submit']").click();
     }
+
+    public WebElement GetElement(String id)
+    {
+        return helper.getElementByID(id);
+    }
 }

@@ -104,22 +104,18 @@ public class step extends base {
         
     }
 
-    @And("Click RESET")
-    public void clickRESET() {
-        emailPage= new EmailPage(driver);
-        emailPage.ClickResetLink();
-        
-    }
+
 
     @Then("Fill Password Field should display")
     public void fillPasswordFieldShouldDisplay() {
-        
+        resetPasswordPage= new ResetPasswordPage(driver);
+      assertTrue(resetPasswordPage.GetElement("pswd").isDisplayed());
     }
 
     @And("Confirm Password Field should display")
     public void confirmPasswordFieldShouldDisplay() {
 
-
+        assertTrue(resetPasswordPage.GetElement("pswd-rpt").isDisplayed());
     }
 
     @When("User Enter New Password as {string}")
@@ -147,5 +143,68 @@ public class step extends base {
     @Then("Error Message should display")
     public void errorMessageShouldDisplay() {
         assertTrue(login.getErrorMsg().isDisplayed());
+    }
+
+    @And("Click {string}")
+    public void click(String linkText) {
+        emailPage= new EmailPage(driver);
+        emailPage.ClickLink(linkText);
+    }
+
+    @When("Click My Business")
+    public void clickMyBusiness() {
+        menubar= new Menubar(driver);
+        menubar.ClickBusiness();
+    }
+
+    @And("Click Add Users")
+    public void clickAddUsers() {
+        menubar.clickUsers();
+    }
+
+    @When("user enter first name as {string}")
+    public void userEnterFirstNameAs(String firstName) {
+        createUserPage= new CreateUserPage(driver);
+        createUserPage.EnterFirstName(firstName);
+    }
+
+    @And("last name as {string}")
+    public void lastNameAs(String lastname) {
+        createUserPage.EnterLastName(lastname);
+    }
+
+    @And("email as {string}")
+    public void emailAs(String email) {
+        createUserPage.EnterEmail(email);
+    }
+
+    @And("mobile number as {string}")
+    public void mobileNumberAs(String mobile) {
+        createUserPage.EnterMaobile(mobile);
+    }
+
+
+
+    @Then("User should click create")
+    public void userShouldClickCreate() {
+        createUserPage.ClickCreate();
+    }
+
+    @Then("New user form should display")
+    public void newUserFormShouldDisplay() {
+        assertTrue(createUserPage.GetFirstName().isDisplayed());
+    }
+
+    @And("Click + button")
+    public void clickButton() {
+        createUserPage= new CreateUserPage(driver);
+        createUserPage.ClickAdd();
+    }
+
+    @And("Open Activate email")
+    public void openActivateEmail() {
+
+        emailPage= new EmailPage(driver);
+        emailPage.ClickWelcomeEmail();
     }
 }

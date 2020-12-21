@@ -11,4 +11,5 @@ public class base {
     public Menubar menubar;
     public EmailPage emailPage;
     public ResetPasswordPage resetPasswordPage;
+    public CreateUserPage createUserPage;
 }

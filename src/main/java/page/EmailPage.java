@@ -24,23 +24,21 @@ public class EmailPage {
         resetEmail.get(0).click();
     }
 
-    public void ClickResetLink()
+    public void ClickLink(String linkText)
     {
 
         try {
             Thread.sleep(1000);
-            WebElement resetBtn = helper.getElementByLinkText("RESET PASSWORD");
+            WebElement resetBtn = helper.getElementByLinkText(linkText);
             resetBtn.click();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
 
-        //psdbComponent.clickDocumentLink();
+        //got it from stackoverflow;
         ArrayList<String> tabs2 = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        //driver.close();
-       // driver.switchTo().window(tabs2.get(0));
 
     }
     public void ClickWelcomeEmail()
